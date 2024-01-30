@@ -25,12 +25,12 @@ export default function Form() {
           </div>
           <select className="form-input" {...register("type")}>
             <option value="Products" defaultValue>
-              Products
+              Продукты
             </option>
-            <option value="Drogerie">Drogerie</option>
-            <option value="Enterteiment">Enterteiment</option>
-            <option value="Restaurants">Restaurants</option>
-            <option value="Rent">Rent</option>
+            <option value="Drogerie">Дрогерия</option>
+            <option value="Enterteiment">Развлечения</option>
+            <option value="Restaurants">Рестораны</option>
+            <option value="Rent">Аренда хаты</option>
           </select>
           <div className="input-group">
             <input

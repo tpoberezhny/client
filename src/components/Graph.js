@@ -33,7 +33,7 @@ export default function Graph() {
         <div className="chart relative">
           <Doughnut {...config}></Doughnut>
           <h3 className="mb-4 font-bold title">
-            Total:{" "}
+            Итог:{" "}
             <span className="block text-3xl text-emerald-400">Kč {0}</span>
           </h3>
         </div>
