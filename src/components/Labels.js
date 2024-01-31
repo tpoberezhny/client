@@ -1,41 +1,21 @@
 import React from "react";
-
-const obj = [
-  {
-    type: "Rent",
-    color: "rgb(255, 205, 86)",
-    percent: 20,
-  },
-  {
-    type: "Products",
-    color: "rgb(54, 162, 235)",
-    percent: 20,
-  },
-  {
-    type: "Restaurants",
-    color: "rgb(255, 99, 132)",
-    percent: 10,
-  },
-  {
-    type: "Drogerie",
-    color: "rgb(255, 205, 86)",
-    percent: 15,
-  },
-  {
-    type: "Enterteiment",
-    color: "rgb(54, 162, 235)",
-    percent: 35,
-  },
-];
+import { default as api } from "../store/apiSlice";
 
 export default function Labels() {
-  return (
-    <>
-      {obj.map((v, i) => (
-        <LabelComponent key={i} data={v}></LabelComponent>
-      ))}
-    </>
-  );
+  const { data, isFetching, isSuccess, isError } = api.useGetTransactionQuery();
+  let Transactions;
+
+  if (isFetching) {
+    Transactions = <div>Fetching</div>;
+  } else if (isSuccess) {
+    Transactions = data.map((v, i) => (
+      <LabelComponent key={i} data={v}></LabelComponent>
+    ));
+  } else if (isError) {
+    Transactions = <div>Error</div>;
+  }
+
+  return <>{Transactions}</>;
 }
 
 function LabelComponent({ data }) {
@@ -47,7 +27,7 @@ function LabelComponent({ data }) {
           className="w-2 h-2 rounded py-3"
           style={{ background: data.color ?? "#f9c74f" }}
         ></div>
-        <h3 lassName="text-md">{data.type ?? ""}</h3>
+        <h3 className="text-md">{data.type ?? ""}</h3>
       </div>
       <h3 className="font-bold">{data.percent ?? 0}%</h3>
     </div>
