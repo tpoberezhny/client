@@ -16,7 +16,7 @@ export default function Form() {
 
   return (
     <div className="form max-w-sm mx-auto w-96">
-      <h1 className="font-bold pb-4 text-xl">Transaction</h1>
+      <h1 className="font-bold pb-4 text-xl">Растраты</h1>
 
       <form id="form" onSubmit={handleSubmit(onSubmit)}>
         <div className="grid gap-4">
@@ -46,7 +46,7 @@ export default function Form() {
             ></input>
           </div>
           <div className="submit-btn">
-            <button className="border py-2 text-white bg-indigo-500 w-full">
+            <button className="border py-2 text-white bg-indigo-500 w-full border-r-6">
               Coxранить
             </button>
           </div>
