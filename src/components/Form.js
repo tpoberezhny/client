@@ -24,7 +24,7 @@ export default function Form() {
             <input
               type="text"
               {...register("name")}
-              placeholder="Кино, билеты"
+              placeholder="Вечерка, бар, билеты"
               className="form-input"
             ></input>
           </div>
@@ -36,6 +36,9 @@ export default function Form() {
             <option value="Развлечения">Развлечения</option>
             <option value="Рестораны">Рестораны</option>
             <option value="Аренда">Аренда хаты</option>
+            <option value="Нужды">Нужды</option>
+            <option value="Путешествия">Путешествия</option>
+
           </select>
           <div className="input-group">
             <input

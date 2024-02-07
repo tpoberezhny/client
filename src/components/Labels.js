@@ -15,6 +15,8 @@ export default function Labels() {
       Рестораны: "rgb(139, 0, 139)",
       Дрогерия: "rgb(255, 69, 0)",
       Развлечения: "rgb(127, 255, 212)",
+      Нужды: "rgb(255, 51, 51)",
+      Путешествия: "rgb(204, 0, 153)",
     };
 
     Transactions = getLabels(data, typeColors).map((v, i) => (
