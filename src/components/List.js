@@ -1,6 +1,18 @@
+// List.js
 import React from "react";
 import "boxicons";
 import { default as api } from "../store/apiSlice";
+
+// Define typeColors directly in List.js
+const typeColors = {
+  Продукты: "rgb(255, 215, 0)",
+  Аренда: "rgb(255, 0, 255)",
+  Рестораны: "rgb(139, 0, 139)",
+  $taff: "rgb(255, 69, 0)",
+  Развлечения: "rgb(127, 255, 212)",
+  Нужды: "rgb(255, 51, 51)",
+  Путешествия: "rgb(204, 0, 153)",
+};
 
 export default function List() {
   const { data, isFetching, isSuccess, isError } = api.useGetTransactionQuery();
@@ -21,6 +33,7 @@ export default function List() {
         key={v.id}
         transaction={v}
         handler={handlerClick}
+        typeColors={typeColors} // Pass typeColors as prop
       ></Transaction>
     ));
   } else if (isError) {
@@ -35,22 +48,21 @@ export default function List() {
   );
 }
 
-function Transaction({ transaction, handler }) {
+function Transaction({ transaction, handler, typeColors }) {
   if (!transaction) return null;
   return (
     <div
       className="item flex justify-center bg-gray-50 py-2 rounded-r"
-      style={{ borderRight: `8px solid ${transaction.color ?? "#e5e5e5"}` }}
+      style={{ borderRight: `8px solid ${typeColors[transaction.type] || "#e5e5e5"}` }}
     >
-      <button className="px-3" onClick={handler}>
+      <button className="px-3" onClick={handler} data-id={transaction._id}>
         <box-icon
-          data-id={transaction._id ?? ""}
           color="red"
           size="15px"
           name="trash"
         />
       </button>
-      <span className="block w-full">
+      <span className="block w-full" style={{ color: typeColors[transaction.type] }}>
         {transaction.name ?? ""} - {transaction.amount} Kč
       </span>
     </div>

@@ -32,7 +32,7 @@ export default function Form() {
             <option value="Продукты" defaultValue>
               Продукты
             </option>
-            <option value="Дрогерия">Дрогерия</option>
+            <option value="$taff">$taff</option>
             <option value="Развлечения">Развлечения</option>
             <option value="Рестораны">Рестораны</option>
             <option value="Аренда">Аренда хаты</option>
