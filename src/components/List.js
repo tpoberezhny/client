@@ -1,9 +1,7 @@
-// List.js
 import React from "react";
 import "boxicons";
 import { default as api } from "../store/apiSlice";
 
-// Define typeColors directly in List.js
 const typeColors = {
   Продукты: "rgb(255, 215, 0)",
   Аренда: "rgb(255, 0, 255)",
@@ -33,7 +31,7 @@ export default function List() {
         key={v.id}
         transaction={v}
         handler={handlerClick}
-        typeColors={typeColors} // Pass typeColors as prop
+        typeColors={typeColors}
       ></Transaction>
     ));
   } else if (isError) {
@@ -53,16 +51,22 @@ function Transaction({ transaction, handler, typeColors }) {
   return (
     <div
       className="item flex justify-center bg-gray-50 py-2 rounded-r"
-      style={{ borderRight: `8px solid ${typeColors[transaction.type] || "#e5e5e5"}` }}
+      style={{
+        borderRight: `8px solid ${typeColors[transaction.type] || "#e5e5e5"}`,
+      }}
     >
-      <button className="px-3" onClick={handler} data-id={transaction._id}>
+      <button className="px-3" onClick={handler}>
         <box-icon
+          data-id={transaction._id ?? ""}
           color="red"
           size="15px"
           name="trash"
         />
       </button>
-      <span className="block w-full" style={{ color: typeColors[transaction.type] }}>
+      <span
+        className="block w-full"
+        style={{ color: typeColors[transaction.type] }}
+      >
         {transaction.name ?? ""} - {transaction.amount} Kč
       </span>
     </div>
