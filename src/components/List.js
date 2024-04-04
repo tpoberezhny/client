@@ -1,6 +1,7 @@
 import React from "react";
 import "boxicons";
 import { default as api } from "../store/apiSlice";
+import { formatDate } from "./utils";
 
 const typeColors = {
   Продукты: "rgb(255, 215, 0)",
@@ -67,7 +68,8 @@ function Transaction({ transaction, handler, typeColors }) {
         className="block w-full"
         style={{ color: typeColors[transaction.type] }}
       >
-        {transaction.name ?? ""} - {transaction.amount} Kč
+        {transaction.name ?? ""} - {transaction.amount} Kč |{" "}
+        {formatDate(transaction.date)}
       </span>
     </div>
   );

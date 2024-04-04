@@ -1,16 +1,7 @@
 import "./App.css";
 import Graph from "./components/Graph";
 import Form from "./components/Form";
-
-function getCurrentMonthInRussian() {
-  const monthsInRussian = [
-    "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
-    "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
-  ];
-  
-  const currentMonthIndex = new Date().getMonth();
-  return monthsInRussian[currentMonthIndex];
-}
+import { getCurrentMonthInRussian } from "./components/utils";
 
 function App() {
   return (

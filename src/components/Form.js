@@ -38,7 +38,6 @@ export default function Form() {
             <option value="Аренда">Аренда хаты</option>
             <option value="Нужды">Нужды</option>
             <option value="Путешествия">Путешествия</option>
-
           </select>
           <div className="input-group">
             <input
@@ -49,7 +48,7 @@ export default function Form() {
             ></input>
           </div>
           <div className="submit-btn">
-            <button className="border py-2 text-white bg-indigo-500 w-full border-r-6">
+            <button className="border py-2 text-white bg-indigo-500 w-full rounded-lg">
               Coxранить
             </button>
           </div>
