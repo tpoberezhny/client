@@ -21,7 +21,17 @@ export default function List() {
   const handleDeleteAllTransactions = async () => {
     setDeleteAllLoading(true);
     try {
-      await Promise.all(data.map(({ id }) => deleteTransaction(id)));
+      if (!data) {
+        console.error("No transaction data available.");
+        return;
+      }
+      await Promise.all(data.map(async ({ id }) => {
+        if (id) {
+          await deleteTransaction(id);
+        } else {
+          console.error("Transaction ID is undefined.");
+        }
+      }));
     } catch (error) {
       console.error("Error deleting transactions:", error);
     }
