@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "boxicons";
 import { default as api } from "../store/apiSlice";
 import { formatDate } from "./utils";
@@ -15,7 +15,19 @@ const typeColors = {
 
 export default function List() {
   const { data, isFetching, isSuccess, isError } = api.useGetTransactionQuery();
-  const [deleteTransaction] = api.useDeleteTransactionMutation();
+  const [deleteTransaction, { isLoading: deleteLoading }] = api.useDeleteTransactionMutation();
+  const [deleteAllLoading, setDeleteAllLoading] = useState(false);
+
+  const handleDeleteAllTransactions = async () => {
+    setDeleteAllLoading(true);
+    try {
+      await Promise.all(data.map(({ id }) => deleteTransaction(id)));
+    } catch (error) {
+      console.error("Error deleting transactions:", error);
+    }
+    setDeleteAllLoading(false);
+  };
+
   let Transactions;
 
   const handlerClick = (e) => {
@@ -43,6 +55,15 @@ export default function List() {
     <div className="flex flex-col py-6 gap-3">
       <h1 className="py-4 font-bold text-xl">История</h1>
       {Transactions}
+      <div>
+        <button
+          onClick={handleDeleteAllTransactions}
+          disabled={deleteAllLoading || deleteLoading}
+          className="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-600"
+        >
+          {deleteAllLoading ? "Deleting..." : "Delete All Transactions"}
+        </button>
+      </div>
     </div>
   );
 }
