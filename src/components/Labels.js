@@ -1,6 +1,7 @@
 import React from "react";
 import { default as api } from "../store/apiSlice";
 import { getLabels } from "../helper/helper";
+import {typeColors} from "../helper/colors.js";
 
 export default function Labels() {
   const { data, isFetching, isSuccess, isError } = api.useGetTransactionQuery();
@@ -9,18 +10,6 @@ export default function Labels() {
   if (isFetching) {
     Transactions = <div>Fetching</div>;
   } else if (isSuccess) {
-    const typeColors = {
-      Продукты: "rgb(255, 215, 0)",
-      Аренда: "rgb(255, 0, 255)",
-      Рестораны: "rgb(139, 0, 139)",
-      $taff: "rgb(255, 69, 0)",
-      Развлечения: "rgb(127, 255, 212)",
-      Нужды: "rgb(255, 51, 51)",
-      Путешествия: "rgb(204, 0, 153)",
-      Vape: "rgb(0, 0, 0)",
-      Машина: "rgb(25,25,112)",
-    };
-
     Transactions = getLabels(data, typeColors).map((v, i) => (
       <LabelComponent key={i} data={v} typeColors={typeColors}></LabelComponent>
     ));
