@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <div className="container mx-auto max-w-6xl text-center drop-shadow-lg text-gray-800">
-        <h1 className="text-4xl py-8 mb-10 bg-[#9BCEFF] text-white rounded">
+        <h1 className="text-4xl py-8 mb-10 bg-[#00FF00] text-white rounded">
           История Расходов ({getCurrentMonthInRussian()})
         </h1>
         {/*grid columns */}

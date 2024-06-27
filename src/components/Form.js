@@ -38,6 +38,8 @@ export default function Form() {
             <option value="Аренда">Аренда хаты</option>
             <option value="Нужды">Нужды</option>
             <option value="Путешествия">Путешествия</option>
+            <option value="Vape">Vape</option>
+            <option value="Машина">Машина</option>
           </select>
           <div className="input-group">
             <input

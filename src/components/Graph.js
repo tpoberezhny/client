@@ -18,6 +18,8 @@ export default function Graph() {
     Развлечения: "rgb(127, 255, 212)",
     Нужды: "rgb(255, 51, 51)",
     Путешествия: "rgb(204, 0, 153)",
+    Vape: "rgb(0, 0, 0)",
+    Машина: "rgb(25,25,112)",
   };
 
   if (isFetching) {
