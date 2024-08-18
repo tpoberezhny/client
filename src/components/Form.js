@@ -45,6 +45,7 @@ export default function Form() {
             <option value="Vape">Vape</option>
             <option value="Машина">Машина</option>
             <option value="Неожиданные">Неожиданные расходы</option>
+            <option value="Чупа">Чупа</option>
           </select>
           <div className="input-group">
             <input
