@@ -4,10 +4,14 @@ import List from "./List";
 import { default as api } from "../store/apiSlice";
 
 export default function Form() {
-  const { register, handleSubmit, resetField } = useForm();
+  const { register, handleSubmit, resetField, watch } = useForm();
   const [addTransaction] = api.useAddTransactionMutation();
 
   const onSubmit = async (data) => {
+    // Check if the name field is empty
+    if (!data.name) {
+      data.name = data.type;
+    }
     if (!data) return {};
     await addTransaction(data).unwrap();
     resetField("name");
